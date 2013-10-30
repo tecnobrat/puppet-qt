@@ -2,12 +2,10 @@ require 'formula'
 
 class QtMavericks < Formula
   homepage 'http://qt-project.org/'
-  url 'http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz'
-  sha1 '745f9ebf091696c0d5403ce691dc28c039d77b9e'
 
   version "4.8.5-boxen2"
 
-  head 'git://gitorious.org/qt/qt.git', :branch => '4.8'
+  head 'git://gitorious.org/qt/qt.git', :branch => 'da616ffa54f22f3334f555ea0bdffe9521145b0b' # 4.8 branch commit that works.
 
   option :universal
   option 'with-qt3support', 'Build with deprecated Qt3Support module support'
@@ -21,7 +19,7 @@ class QtMavericks < Formula
   odie 'qt: --with-qtdbus has been renamed to --with-d-bus' if build.include? 'with-qtdbus'
   odie 'qt: --with-demos-examples is no longer supported' if build.include? 'with-demos-examples'
   odie 'qt: --with-debug-and-release is no longer supported' if build.include? 'with-debug-and-release'
-  
+
   def patches
     DATA
   end
@@ -44,7 +42,7 @@ class QtMavericks < Formula
     # locations and with Xcode-only.
     if superenv?
       args << '-no-3dnow'
-      
+
       args << '-no-ssse3' unless Hardware::CPU.send(:sysctl_bool, "hw.optional.supplementalsse3")
     end
 
@@ -81,7 +79,7 @@ class QtMavericks < Formula
     end
 
     args << '-developer-build' if build.include? 'developer'
-    
+
     system "curl -o src/3rdparty/webkit/WebKitLibraries/libWebKitSystemInterfaceMavericks.a http://trac.webkit.org/export/157771/trunk/WebKitLibraries/libWebKitSystemInterfaceMavericks.a"
 
     system "./configure", *args
