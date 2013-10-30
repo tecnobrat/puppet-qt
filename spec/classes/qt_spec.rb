@@ -24,7 +24,11 @@ describe 'qt' do
     let(:facts) { default_facts.merge(:macosx_productversion_major => '10.9')}
 
     it do
-      should_not contain_package('boxen/brews/qt').with_ensure('4.8.5-boxen1')
+      should include_class('homebrew')
+      should include_class('xquartz')
+
+      should contain_homebrew__formula('qt_mavericks')
+      should contain_package('boxen/brews/qt_mavericks').with_ensure('4.8.5-boxen2')
     end
   end
 end

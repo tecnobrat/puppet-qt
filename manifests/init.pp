@@ -10,10 +10,13 @@ class qt {
 
   case $::macosx_productversion_major {
     '10.9': {
-      warning('QT is currently unsupported by OS X Mavericks, not actually installing it!')
+      homebrew::formula { 'qt_mavericks':
+        before => Package['boxen/brews/qt_mavericks'],
+      }
 
-      Package <| title == 'boxen/brews/qt' |> {
-        ensure => absent,
+      package { 'boxen/brews/qt_mavericks':
+        ensure  => '4.8.5-boxen2',
+        require => Class['xquartz'],
       }
     }
 
