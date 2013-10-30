@@ -17,7 +17,6 @@ class QtMavericks < Formula
 
   depends_on "d-bus" => :optional
   depends_on "mysql" => :optional
-  depends_on "libtiff"
 
   odie 'qt: --with-qtdbus has been renamed to --with-d-bus' if build.include? 'with-qtdbus'
   odie 'qt: --with-demos-examples is no longer supported' if build.include? 'with-demos-examples'
@@ -35,7 +34,7 @@ class QtMavericks < Formula
             "-system-zlib",
             "-confirm-license", "-opensource",
             "-nomake", "demos", "-nomake", "examples",
-            "-cocoa", "-fast", "-release", "-system-libtiff"]
+            "-cocoa", "-fast", "-release"]
 
     # we have to disable these to avoid triggering optimization code
     # that will fail in superenv, perhaps because we rename clang to cc and
