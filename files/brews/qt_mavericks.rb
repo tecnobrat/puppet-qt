@@ -45,7 +45,7 @@ class QtMavericks < Formula
     if superenv?
       args << '-no-3dnow'
       
-      args << '-no-ssse3' unless Hardware::CPU.ssse3?
+      args << '-no-ssse3' unless Hardware::CPU.send(:sysctl_bool, "hw.optional.supplementalsse3")
     end
 
     args << "-L#{MacOS::X11.lib}" << "-I#{MacOS::X11.include}" if MacOS::X11.installed?
