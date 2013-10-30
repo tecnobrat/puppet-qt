@@ -28,7 +28,7 @@ describe 'qt' do
       should include_class('xquartz')
 
       should contain_homebrew__formula('qt_mavericks')
-      should contain_package('boxen/brews/qt_mavericks').with_ensure('4.8.5-boxen2')
+      should contain_package('boxen/brews/qt_mavericks').with_ensure('HEAD')
     end
   end
 end

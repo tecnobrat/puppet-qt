@@ -15,7 +15,7 @@ class qt {
       }
 
       package { 'boxen/brews/qt_mavericks':
-        ensure          => '4.8.5-boxen2',
+        ensure          => 'HEAD',
         require         => Class['xquartz'],
         install_options => ['--HEAD']
       }

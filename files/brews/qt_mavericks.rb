@@ -3,7 +3,7 @@ require 'formula'
 class QtMavericks < Formula
   homepage 'http://qt-project.org/'
 
-  version "4.8.5-boxen2"
+  version "HEAD"
 
   head 'git://gitorious.org/qt/qt.git', :branch => 'da616ffa54f22f3334f555ea0bdffe9521145b0b' # 4.8 branch commit that works.
 
