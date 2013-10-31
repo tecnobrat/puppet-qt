@@ -5,7 +5,7 @@ class QtMavericks < Formula
 
   version "HEAD"
 
-  head 'git://gitorious.org/qt/qt.git', :branch => 'da616ffa54f22f3334f555ea0bdffe9521145b0b' # 4.8 branch commit that works.
+  head 'git://gitorious.org/qt/qt.git', :branch => '4.8', :revision => 'da616ffa54f22f3334f555ea0bdffe9521145b0b' # 4.8 branch commit that works.
 
   option :universal
   option 'with-qt3support', 'Build with deprecated Qt3Support module support'
