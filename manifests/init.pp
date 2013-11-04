@@ -8,26 +8,27 @@ class qt {
   include homebrew
   include xquartz
 
+  homebrew::formula { 'qt':
+    before => Package['boxen/brews/qt'],
+  }
+
   case $::macosx_productversion_major {
     '10.9': {
-      homebrew::formula { 'qt_mavericks':
-        before => Package['boxen/brews/qt_mavericks'],
-      }
 
-      package { 'boxen/brews/qt_mavericks':
+      package { 'boxen/brews/qt':
         ensure          => 'HEAD',
         require         => Class['xquartz'],
         install_options => ['--HEAD']
       }
+
+      package { 'boxen/brews/qt_mavericks':
+        ensure          => absent
+      }
     }
 
     default: {
-      homebrew::formula { 'qt':
-        before => Package['boxen/brews/qt'],
-      }
-
       package { 'boxen/brews/qt':
-        ensure  => '4.8.5-boxen1',
+        ensure  => '4.8.5-boxen2',
         require => Class['xquartz'],
       }
     }
